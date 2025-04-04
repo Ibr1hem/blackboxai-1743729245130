@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Dashboard | IQ Learn</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: white;
+        }
+        .sidebar {
+            background: white;
+            color: #1e293b;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .active-nav {
+            background: #3b82f6;
+            color: white;
+        }
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+        .active-tab {
+            border-bottom: 3px solid #f59e0b;
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-gray-100">
+    <div class="flex">
+        <!-- Sidebar -->
+        <div class="sidebar bg-gray-800 text-white w-64 min-h-screen fixed">
+            <div class="p-4 flex items-center space-x-3 border-b border-gray-700">
+                <img id="teacher-avatar" src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg" class="w-10 h-10 rounded-full object-cover">
+                <div>
+                    <p id="teacher-name" class="font-medium">John Doe</p>
+                    <p class="text-xs text-gray-400">Teacher</p>
+                </div>
+            </div>
+            <nav class="p-4">
+                <ul class="space-y-2">
+                    <li>
+                        <a href="teacher-dashboard.html" class="flex items-center space-x-3 p-2 rounded-lg active-nav">
+                            <i class="fas fa-tachometer-alt w-5"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="students.html" class="flex items-center space-x-3 p-2 rounded-lg bg-gray-700 text-white">
+                            <i class="fas fa-users w-5"></i>
+                            <span>Students</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="lessons.html?view=teacher" class="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-700">
+                            <i class="fas fa-book w-5"></i>
+                            <span>Lessons</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="progress.html" class="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-700">
+                            <i class="fas fa-chart-bar w-5"></i>
+                            <span>Progress</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-700">
+                            <i class="fas fa-cog w-5"></i>
+                            <span>Settings</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="index.html" class="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-700">
+                            <i class="fas fa-home w-5"></i>
+                            <span>Home</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="support.html" class="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-700">
+                            <i class="fas fa-question-circle w-5"></i>
+                            <span>Support</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="login.html" class="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-700">
+                            <i class="fas fa-sign-out-alt w-5"></i>
+                            <span>Logout</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+        <!-- Main Content -->
+        <div class="ml-64 flex-1 p-8">
+            <div class="flex justify-between items-center mb-8">
+                <h1 class="text-2xl font-bold text-gray-800">Teacher Dashboard</h1>
+                <div class="flex space-x-4">
+                    <button class="bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-2 px-4 rounded-lg">
+                        <i class="fas fa-plus mr-2"></i> New Lesson
+                    </button>
+                    <a href="students.html" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg">
+                        <i class="fas fa-user-plus mr-2"></i> Add Student
+                    </a>
+                </div>
+            </div>
+
+            <!-- Stats Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <div class="stat-card bg-white rounded-xl shadow-md p-6 transition-all duration-300">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-gray-500">Total Students</p>
+                            <p class="text-3xl font-bold">24</p>
+                        </div>
+                        <div class="bg-blue-100 p-3 rounded-full">
+                            <i class="fas fa-users text-blue-500 text-xl"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="stat-card bg-white rounded-xl shadow-md p-6 transition-all duration-300">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-gray-500">Active Lessons</p>
+                            <p class="text-3xl font-bold">8</p>
+                        </div>
+                        <div class="bg-green-100 p-3 rounded-full">
+                            <i class="fas fa-book text-green-500 text-xl"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="stat-card bg-white rounded-xl shadow-md p-6 transition-all duration-300">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-gray-500">Subscription</p>
+                            <p class="text-3xl font-bold">Pro</p>
+                        </div>
+                        <div class="bg-yellow-100 p-3 rounded-full">
+                            <i class="fas fa-crown text-yellow-500 text-xl"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tabs -->
+            <div class="border-b border-gray-200 mb-6">
+                <ul class="flex space-x-8">
+                    <li class="active-tab">
+                        <a href="#" class="block py-2 px-1 font-medium text-gray-800">Recent Activity</a>
+                    </li>
+                    <li>
+                        <a href="#" class="block py-2 px-1 font-medium text-gray-500 hover:text-gray-800">Students</a>
+                    </li>
+                    <li>
+                        <a href="#" class="block py-2 px-1 font-medium text-gray-500 hover:text-gray-800">Lessons</a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Recent Activity -->
+            <div class="bg-white rounded-xl shadow-md overflow-hidden mb-8">
+                <div class="p-6">
+                    <h2 class="text-lg font-semibold mb-4">Recent Student Progress</h2>
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full divide-y divide-gray-200">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Student</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Lesson</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Progress</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Last Active</th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-white divide-y divide-gray-200">
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="flex items-center">
+                                            <div class="flex-shrink-0 h-10 w-10">
+                                                <img class="h-10 w-10 rounded-full" src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg" alt="">
+                                            </div>
+                                            <div class="ml-4">
+                                                <div class="text-sm font-medium text-gray-900">Sarah Johnson</div>
+                                                <div class="text-sm text-gray-500">English</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="text-sm text-gray-900">Greetings</div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="flex items-center">
+                                            <div class="w-full bg-gray-200 rounded-full h-2.5 mr-2">
+                                                <div class="bg-green-500 h-2.5 rounded-full" style="width: 80%"></div>
+                                            </div>
+                                            <span class="text-sm font-medium">80%</span>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                        2 hours ago
+                                    </td>
+                                </tr>
+                                <!-- More rows... -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Subscription Notice -->
+            <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-8">
+                <div class="flex">
+                    <div class="flex-shrink-0">
+                        <i class="fas fa-exclamation-circle text-yellow-400"></i>
+                    </div>
+                    <div class="ml-3">
+                        <p class="text-sm text-yellow-700">
+                            Your Pro subscription will renew on <span class="font-medium">June 15, 2025</span>.
+                            <a href="#" class="font-medium text-yellow-700 underline hover:text-yellow-600">Manage subscription</a>.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load teacher data from localStorage
+            const userData = JSON.parse(localStorage.getItem('userData')) || {};
+            
+            if (userData.profileImage) {
+                document.getElementById('teacher-avatar').src = userData.profileImage;
+            }
+            
+            if (userData.firstName && userData.lastName) {
+                document.getElementById('teacher-name').textContent = `${userData.firstName} ${userData.lastName}`;
+            }
+
+            // Tab switching
+            const tabs = document.querySelectorAll('.border-b li');
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    tabs.forEach(t => t.classList.remove('active-tab'));
+                    this.classList.add('active-tab');
+                });
+            });
+        });
+    </script>
+    <script src="live-chat.js"></script>
+</body>
+</html>
