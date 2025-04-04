@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile | LinguaAI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f3f4f6;
+        }
+        .profile-image {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+        }
+        .progress-ring__circle {
+            transition: stroke-dashoffset 0.5s;
+            transform: rotate(-90deg);
+            transform-origin: 50% 50%;
+        }
+        .language-progress {
+            transition: width 0.5s ease-in-out;
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-gray-100">
+    <!-- Header -->
+    <header class="bg-white shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 py-4 sm:px-6 lg:px-8 flex justify-between items-center">
+            <div class="flex items-center space-x-4">
+                <img id="profile-avatar" src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg" class="w-10 h-10 rounded-full object-cover">
+                <div>
+                    <h1 class="text-xl font-bold text-gray-900">My Profile</h1>
+                    <p class="text-sm text-gray-500">Manage your account</p>
+                </div>
+            </div>
+            <div class="flex items-center space-x-4">
+                <a href="lessons.html" class="text-gray-600 hover:text-gray-900">
+                    <i class="fas fa-book-open text-xl"></i>
+                </a>
+                <a href="achievements.html" class="text-gray-600 hover:text-gray-900">
+                    <i class="fas fa-trophy text-xl"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
+        <!-- Profile Section -->
+        <div class="bg-white rounded-lg shadow-md overflow-hidden mb-8">
+            <div class="p-6">
+                <div class="flex flex-col md:flex-row items-center md:items-start space-y-6 md:space-y-0 md:space-x-6">
+                    <div class="flex flex-col items-center">
+                        <img id="profile-image" src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg" class="profile-image rounded-full border-4 border-yellow-400 mb-4">
+                        <button id="edit-image-btn" class="text-sm text-yellow-600 hover:text-yellow-700 font-medium">
+                            <i class="fas fa-camera mr-1"></i> Change Photo
+                        </button>
+                    </div>
+                    <div class="flex-1 w-full">
+                        <h2 class="text-2xl font-bold mb-4" id="profile-name">John Doe</h2>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-500 mb-1">Email</label>
+                                <p class="text-gray-900" id="profile-email">john.doe@example.com</p>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-500 mb-1">Member Since</label>
+                                <p class="text-gray-900" id="join-date">May 15, 2023</p>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-500 mb-1">Account Type</label>
+                                <p class="text-gray-900" id="account-type">Student</p>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-500 mb-1">Teacher</label>
+                                <p class="text-gray-900" id="teacher-name">Prof. Maria Rodriguez</p>
+                            </div>
+                        </div>
+                        
+                        <button id="edit-profile-btn" class="bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-2 px-4 rounded-lg">
+                            <i class="fas fa-edit mr-2"></i> Edit Profile
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Progress Overview -->
+        <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+            <h2 class="text-lg font-semibold mb-6">Your Language Progress</h2>
+            
+            <div class="space-y-6">
+                <!-- English Progress -->
+                <div>
+                    <div class="flex justify-between mb-2">
+                        <span class="font-medium">English</span>
+                        <span class="text-sm font-medium">75%</span>
+                    </div>
+                    <div class="w-full bg-gray-200 rounded-full h-2.5">
+                        <div class="language-progress bg-yellow-500 h-2.5 rounded-full" style="width: 75%"></div>
+                    </div>
+                    <div class="grid grid-cols-3 gap-4 mt-4">
+                        <div class="text-center">
+                            <p class="text-sm text-gray-500">Lessons</p>
+                            <p class="font-bold">3/4</p>
+                        </div>
+                        <div class="text-center">
+                            <p class="text-sm text-gray-500">Quizzes</p>
+                            <p class="font-bold">5</p>
+                        </div>
+                        <div class="text-center">
+                            <p class="text-sm text-gray-500">Streak</p>
+                            <p class="font-bold">7 days</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Spanish Progress -->
+                <div>
+                    <div class="flex justify-between mb-2">
+                        <span class="font-medium">Spanish</span>
+                        <span class="text-sm font-medium">40%</span>
+                    </div>
+                    <div class="w-full bg-gray-200 rounded-full h-2.5">
+                        <div class="language-progress bg-blue-500 h-2.5 rounded-full" style="width: 40%"></div>
+                    </div>
+                    <div class="grid grid-cols-3 gap-4 mt-4">
+                        <div class="text-center">
+                            <p class="text-sm text-gray-500">Lessons</p>
+                            <p class="font-bold">2/5</p>
+                        </div>
+                        <div class="text-center">
+                            <p class="text-sm text-gray-500">Quizzes</p>
+                            <p class="font-bold">3</p>
+                        </div>
+                        <div class="text-center">
+                            <p class="text-sm text-gray-500">Streak</p>
+                            <p class="font-bold">3 days</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Achievements Preview -->
+        <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-lg font-semibold">Recent Achievements</h2>
+                <a href="achievements.html" class="text-sm text-yellow-600 hover:text-yellow-700 font-medium">View All</a>
+            </div>
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                <div class="bg-yellow-50 rounded-lg p-4 flex flex-col items-center">
+                    <div class="w-12 h-12 rounded-full bg-yellow-100 flex items-center justify-center mb-2">
+                        <i class="fas fa-star text-yellow-500"></i>
+                    </div>
+                    <p class="text-sm font-medium text-center">Fast Learner</p>
+                </div>
+                <div class="bg-blue-50 rounded-lg p-4 flex flex-col items-center">
+                    <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mb-2">
+                        <i class="fas fa-microphone text-blue-500"></i>
+                    </div>
+                    <p class="text-sm font-medium text-center">Perfect Pronunciation</p>
+                </div>
+                <div class="bg-purple-50 rounded-lg p-4 flex flex-col items-center">
+                    <div class="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center mb-2">
+                        <i class="fas fa-calendar-check text-purple-500"></i>
+                    </div>
+                    <p class="text-sm font-medium text-center">7-Day Streak</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Account Settings -->
+        <div class="bg-white rounded-lg shadow-md p-6">
+            <h2 class="text-lg font-semibold mb-6">Account Settings</h2>
+            <div class="space-y-4">
+                <div class="flex justify-between items-center">
+                    <div>
+                        <p class="font-medium">Email Notifications</p>
+                        <p class="text-sm text-gray-500">Receive updates and reminders</p>
+                    </div>
+                    <label class="relative inline-flex items-center cursor-pointer">
+                        <input type="checkbox" value="" class="sr-only peer" checked>
+                        <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-yellow-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-yellow-500"></div>
+                    </label>
+                </div>
+                <div class="flex justify-between items-center">
+                    <div>
+                        <p class="font-medium">Dark Mode</p>
+                        <p class="text-sm text-gray-500">Switch to dark theme</p>
+                    </div>
+                    <label class="relative inline-flex items-center cursor-pointer">
+                        <input type="checkbox" value="" class="sr-only peer">
+                        <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-yellow-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-yellow-500"></div>
+                    </label>
+                </div>
+                <div class="pt-4 border-t border-gray-200">
+                    <button class="text-red-500 hover:text-red-700 font-medium">
+                        <i class="fas fa-sign-out-alt mr-2"></i> Logout
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer Navigation -->
+    <nav class="fixed bottom-0 left-0 right-0 bg-white shadow-lg flex justify-around items-center p-3">
+        <a href="lessons.html" class="text-gray-500 flex flex-col items-center">
+            <i class="fas fa-book-open text-xl"></i>
+            <span class="text-xs mt-1">Lessons</span>
+        </a>
+        <a href="achievements.html" class="text-gray-500 flex flex-col items-center">
+            <i class="fas fa-trophy text-xl"></i>
+            <span class="text-xs mt-1">Achievements</span>
+        </a>
+        <a href="profile.html" class="text-yellow-500 flex flex-col items-center">
+            <i class="fas fa-user text-xl"></i>
+            <span class="text-xs mt-1">Profile</span>
+        </a>
+    </nav>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load user data from localStorage
+            const userData = JSON.parse(localStorage.getItem('userData')) || {};
+            
+            if (userData.profileImage) {
+                document.getElementById('profile-image').src = userData.profileImage;
+                document.getElementById('profile-avatar').src = userData.profileImage;
+            }
+            
+            if (userData.firstName && userData.lastName) {
+                document.getElementById('profile-name').textContent = `${userData.firstName} ${userData.lastName}`;
+            }
+
+            // Set join date
+            const joinDate = new Date();
+            document.getElementById('join-date').textContent = joinDate.toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+
+            // Set account type
+            const role = localStorage.getItem('userRole') || 'student';
+            document.getElementById('account-type').textContent = role.charAt(0).toUpperCase() + role.slice(1);
+
+            // Edit profile button
+            document.getElementById('edit-profile-btn').addEventListener('click', function() {
+                window.location.href = 'profile-setup.html';
+            });
+
+            // Edit image button
+            document.getElementById('edit-image-btn').addEventListener('click', function() {
+                document.getElementById('profile-image').click();
+            });
+        });
+    </script>
+</body>
+</html>
