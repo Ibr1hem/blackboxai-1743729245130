@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificate | LinguaAI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .certificate-border {
+            border: 20px solid transparent;
+            border-image: linear-gradient(45deg, #ffc107, #ff5722, #9c27b0, #3f51b5);
+            border-image-slice: 1;
+        }
+        .watermark {
+            position: absolute;
+            opacity: 0.1;
+            font-size: 10rem;
+            transform: rotate(-30deg);
+            z-index: -1;
+        }
+    </style>
+</head>
+<body class="min-h-screen text-white py-12">
+    <div class="max-w-6xl mx-auto px-4">
+        <div class="text-center mb-8">
+            <h1 class="text-4xl font-bold">Your Language Certificate</h1>
+            <p class="text-xl mt-2">Congratulations on completing the level!</p>
+        </div>
+
+        <div class="certificate-border bg-white text-gray-800 p-12 relative overflow-hidden">
+            <div class="watermark text-blue-200 top-1/4 left-1/4">LinguaAI</div>
+            <div class="text-center">
+                <img src="https://images.pexels.com/photos/590493/pexels-photo-590493.jpeg" alt="Certificate Logo" class="h-24 mx-auto mb-8 rounded-full">
+                <h2 class="text-3xl font-bold mb-2">Certificate of Achievement</h2>
+                <p class="text-xl mb-8">This is to certify that</p>
+                <h3 id="student-name" class="text-4xl font-bold mb-8 text-yellow-600">[Student Name]</h3>
+                <p class="text-xl mb-8">has successfully completed</p>
+                <div class="mb-8">
+                    <h4 class="text-2xl font-semibold" id="language-name">English</h4>
+                    <p class="text-lg">Level <span id="level-number" class="font-bold">1</span></p>
+                </div>
+                <div class="flex justify-center space-x-12 mb-8">
+                    <div>
+                        <p class="text-sm">Score</p>
+                        <p id="score" class="text-2xl font-bold">90%</p>
+                    </div>
+                    <div>
+                        <p class="text-sm">Date</p>
+                        <p id="completion-date" class="text-2xl font-bold">October 15, 2023</p>
+                    </div>
+                </div>
+                <div class="flex justify-center space-x-8 mt-12">
+                    <div class="text-center">
+                        <div class="h-24 w-24 border-b-2 border-gray-400 mx-auto mb-2"></div>
+                        <p>Instructor</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="h-24 w-24 border-b-2 border-gray-400 mx-auto mb-2"></div>
+                        <p>Director</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex justify-center mt-8 space-x-4">
+            <button id="download-pdf" class="bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-3 px-6 rounded-full">
+                <i class="fas fa-download mr-2"></i> Download PDF
+            </button>
+            <button id="return-home" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-full">
+                <i class="fas fa-home mr-2"></i> Return Home
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Set current date
+        document.getElementById('completion-date').textContent = new Date().toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });
+
+        // PDF download functionality
+        document.getElementById('download-pdf').addEventListener('click', function() {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF({
+                orientation: 'landscape',
+                unit: 'mm'
+            });
+
+            // Add certificate content to PDF
+            doc.setFontSize(24);
+            doc.text('Certificate of Achievement', 105, 30, { align: 'center' });
+            doc.setFontSize(16);
+            doc.text('This is to certify that', 105, 40, { align: 'center' });
+            doc.setFontSize(20);
+            doc.text(document.getElementById('student-name').textContent, 105, 50, { align: 'center' });
+            doc.setFontSize(16);
+            doc.text('has successfully completed', 105, 60, { align: 'center' });
+            doc.setFontSize(18);
+            doc.text(document.getElementById('language-name').textContent + ' - Level ' + 
+                   document.getElementById('level-number').textContent, 105, 70, { align: 'center' });
+            doc.setFontSize(14);
+            doc.text('Score: ' + document.getElementById('score').textContent, 105, 80, { align: 'center' });
+            doc.text('Completed on: ' + document.getElementById('completion-date').textContent, 105, 90, { align: 'center' });
+            
+            // Save the PDF
+            doc.save('LinguaAI_Certificate.pdf');
+        });
+
+        // Return home button
+        document.getElementById('return-home').addEventListener('click', function() {
+            window.location.href = 'index.html';
+        });
+    </script>
+</body>
+</html>
