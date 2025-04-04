@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Setup | LinguaAI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .profile-preview {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+        }
+        .dropzone {
+            border: 2px dashed rgba(255, 255, 255, 0.3);
+            transition: all 0.3s;
+        }
+        .dropzone.active {
+            border-color: #f59e0b;
+            background-color: rgba(245, 158, 11, 0.1);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-4">
+    <div class="bg-white bg-opacity-10 backdrop-filter backdrop-blur-sm rounded-xl shadow-2xl p-8 w-full max-w-md">
+        <div class="text-center mb-8">
+            <h2 class="text-2xl font-bold text-white">Complete Your Profile</h2>
+            <p class="text-white opacity-80 mt-2">Let's get to know you better</p>
+        </div>
+
+        <form id="profile-form" class="space-y-6">
+            <div class="flex flex-col items-center">
+                <div id="image-dropzone" class="dropzone rounded-full mb-4 p-2 cursor-pointer">
+                    <img id="profile-preview" src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg" class="profile-preview rounded-full border-4 border-white">
+                </div>
+                <input type="file" id="profile-image" accept="image/*" class="hidden">
+                <button type="button" id="upload-btn" class="text-sm text-yellow-300 hover:underline">Change Photo</button>
+                <p class="text-xs text-gray-300 mt-1">(Or paste a Pexels image URL below)</p>
+            </div>
+
+            <div>
+                <label for="image-url" class="block text-sm font-medium text-white mb-1">Pexels Image URL</label>
+                <input type="url" id="image-url" placeholder="https://images.pexels.com/..." class="w-full px-4 py-2 rounded-lg bg-white bg-opacity-20 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-500">
+            </div>
+
+            <div class="grid grid-cols-2 gap-4">
+                <div>
+                    <label for="first-name" class="block text-sm font-medium text-white mb-1">First Name</label>
+                    <input type="text" id="first-name" required class="w-full px-4 py-2 rounded-lg bg-white bg-opacity-20 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                </div>
+                <div>
+                    <label for="last-name" class="block text-sm font-medium text-white mb-1">Last Name</label>
+                    <input type="text" id="last-name" required class="w-full px-4 py-2 rounded-lg bg-white bg-opacity-20 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                </div>
+            </div>
+
+            <div class="pt-4">
+                <button type="submit" class="w-full bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-3 px-4 rounded-lg transition-all duration-300 transform hover:scale-105">
+                    Save Profile <i class="fas fa-save ml-2"></i>
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const profileForm = document.getElementById('profile-form');
+            const profileImage = document.getElementById('profile-image');
+            const profilePreview = document.getElementById('profile-preview');
+            const imageUrlInput = document.getElementById('image-url');
+            const uploadBtn = document.getElementById('upload-btn');
+            const dropzone = document.getElementById('image-dropzone');
+
+            // Handle file upload
+            uploadBtn.addEventListener('click', function() {
+                profileImage.click();
+            });
+
+            profileImage.addEventListener('change', function(e) {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(event) {
+                        profilePreview.src = event.target.result;
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+
+            // Handle URL input
+            imageUrlInput.addEventListener('input', function() {
+                if (this.value) {
+                    profilePreview.src = this.value;
+                }
+            });
+
+            // Drag and drop
+            dropzone.addEventListener('dragover', function(e) {
+                e.preventDefault();
+                this.classList.add('active');
+            });
+
+            dropzone.addEventListener('dragleave', function() {
+                this.classList.remove('active');
+            });
+
+            dropzone.addEventListener('drop', function(e) {
+                e.preventDefault();
+                this.classList.remove('active');
+                const file = e.dataTransfer.files[0];
+                if (file && file.type.match('image.*')) {
+                    const reader = new FileReader();
+                    reader.onload = function(event) {
+                        profilePreview.src = event.target.result;
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+
+            // Form submission
+            profileForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const userData = {
+                    firstName: document.getElementById('first-name').value,
+                    lastName: document.getElementById('last-name').value,
+                    profileImage: profilePreview.src,
+                    role: localStorage.getItem('userRole') || 'student'
+                };
+                
+                // Store user data in localStorage
+                localStorage.setItem('userData', JSON.stringify(userData));
+                
+                // Redirect based on role
+                if (userData.role === 'teacher') {
+                    window.location.href = 'teacher-dashboard.html';
+                } else {
+                    window.location.href = 'lessons.html';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
