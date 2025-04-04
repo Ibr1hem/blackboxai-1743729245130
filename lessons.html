@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Lessons | LinguaAI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f3f4f6;
+        }
+        .lesson-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        .locked {
+            filter: grayscale(80%);
+            opacity: 0.7;
+        }
+        .progress-ring__circle {
+            transition: stroke-dashoffset 0.5s;
+            transform: rotate(-90deg);
+            transform-origin: 50% 50%;
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-gray-100">
+    <!-- Header -->
+    <header class="bg-white shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 py-4 sm:px-6 lg:px-8 flex justify-between items-center">
+            <div class="flex items-center space-x-4">
+                <img id="student-avatar" src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg" class="w-10 h-10 rounded-full object-cover">
+                <div>
+                    <h1 class="text-xl font-bold text-gray-900">My Lessons</h1>
+                    <p class="text-sm text-gray-500" id="student-level">Beginner Level</p>
+                </div>
+            </div>
+            <div class="flex items-center space-x-4">
+                <a href="profile.html" class="text-gray-600 hover:text-gray-900">
+                    <i class="fas fa-user-circle text-xl"></i>
+                </a>
+                <a href="achievements.html" class="text-gray-600 hover:text-gray-900">
+                    <i class="fas fa-trophy text-xl"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
+        <!-- Language Selection -->
+        <div class="mb-8">
+            <label for="language" class="block text-sm font-medium text-gray-700 mb-2">Select Language:</label>
+            <select id="language" class="block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm rounded-md">
+                <option>English</option>
+                <option>Spanish</option>
+                <option>French</option>
+                <option>German</option>
+            </select>
+        </div>
+
+        <!-- Progress Summary -->
+        <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+            <h2 class="text-lg font-semibold mb-4">Your Progress</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="flex items-center">
+                    <div class="relative w-16 h-16 mr-4">
+                        <svg class="progress-ring w-16 h-16" viewBox="0 0 36 36">
+                            <circle class="progress-ring__background" stroke="#e5e7eb" stroke-width="3" fill="none" cx="18" cy="18" r="15.9155"></circle>
+                            <circle class="progress-ring__circle" stroke="#f59e0b" stroke-width="3" stroke-dasharray="100, 100" stroke-dashoffset="25" fill="none" cx="18" cy="18" r="15.9155"></circle>
+                        </svg>
+                        <span class="absolute inset-0 flex items-center justify-center text-sm font-bold">75%</span>
+                    </div>
+                    <div>
+                        <p class="text-sm text-gray-500">Overall Completion</p>
+                        <p class="text-lg font-semibold">3 of 4 Lessons</p>
+                    </div>
+                </div>
+                <div class="flex items-center">
+                    <div class="bg-blue-100 p-3 rounded-full mr-4">
+                        <i class="fas fa-star text-blue-500 text-xl"></i>
+                    </div>
+                    <div>
+                        <p class="text-sm text-gray-500">Achievements</p>
+                        <p class="text-lg font-semibold">5 Unlocked</p>
+                    </div>
+                </div>
+                <div class="flex items-center">
+                    <div class="bg-green-100 p-3 rounded-full mr-4">
+                        <i class="fas fa-check-circle text-green-500 text-xl"></i>
+                    </div>
+                    <div>
+                        <p class="text-sm text-gray-500">Current Streak</p>
+                        <p class="text-lg font-semibold">7 Days</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Lessons Grid -->
+        <h2 class="text-xl font-bold mb-4">Available Lessons</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Lesson 1 -->
+            <div class="lesson-card bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300">
+                <div class="p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-yellow-100 text-yellow-800">
+                            Lesson 1
+                        </span>
+                        <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800">
+                            <i class="fas fa-check-circle mr-1"></i> Completed
+                        </span>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">Greetings & Introductions</h3>
+                    <p class="text-gray-600 mb-4">Learn basic greetings and how to introduce yourself.</p>
+                    <div class="flex justify-between items-center">
+                        <div class="flex space-x-2">
+                            <span class="inline-flex items-center text-sm text-gray-500">
+                                <i class="fas fa-star text-yellow-400 mr-1"></i> 4.8
+                            </span>
+                            <span class="inline-flex items-center text-sm text-gray-500">
+                                <i class="fas fa-clock mr-1"></i> 15 min
+                            </span>
+                        </div>
+                        <a href="quiz.html?lesson=1" class="text-yellow-500 hover:text-yellow-600 font-medium">
+                            Take Quiz <i class="fas fa-arrow-right ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lesson 2 -->
+            <div class="lesson-card bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300">
+                <div class="p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-yellow-100 text-yellow-800">
+                            Lesson 2
+                        </span>
+                        <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-800">
+                            <i class="fas fa-play-circle mr-1"></i> In Progress
+                        </span>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">Common Phrases</h3>
+                    <p class="text-gray-600 mb-4">Essential phrases for everyday conversations.</p>
+                    <div class="flex justify-between items-center">
+                        <div class="flex space-x-2">
+                            <span class="inline-flex items-center text-sm text-gray-500">
+                                <i class="fas fa-star text-yellow-400 mr-1"></i> 4.5
+                            </span>
+                            <span class="inline-flex items-center text-sm text-gray-500">
+                                <i class="fas fa-clock mr-1"></i> 20 min
+                            </span>
+                        </div>
+                        <a href="quiz.html?lesson=2" class="text-yellow-500 hover:text-yellow-600 font-medium">
+                            Continue <i class="fas fa-arrow-right ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lesson 3 -->
+            <div class="lesson-card bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300">
+                <div class="p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-yellow-100 text-yellow-800">
+                            Lesson 3
+                        </span>
+                        <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-gray-100 text-gray-800">
+                            <i class="fas fa-lock mr-1"></i> Locked
+                        </span>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">Food & Dining</h3>
+                    <p class="text-gray-600 mb-4">Vocabulary for ordering food and dining out.</p>
+                    <div class="flex justify-between items-center">
+                        <div class="flex space-x-2">
+                            <span class="inline-flex items-center text-sm text-gray-500">
+                                <i class="fas fa-star text-yellow-400 mr-1"></i> 4.7
+                            </span>
+                            <span class="inline-flex items-center text-sm text-gray-500">
+                                <i class="fas fa-clock mr-1"></i> 25 min
+                            </span>
+                        </div>
+                        <button class="text-gray-400 font-medium cursor-not-allowed">
+                            Complete Previous Lesson
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Teacher Section -->
+        <div class="mt-12 bg-white rounded-lg shadow-md p-6">
+            <div class="flex items-center justify-between mb-4">
+                <h2 class="text-lg font-semibold">Your Teacher</h2>
+                <a href="#" class="text-sm text-yellow-600 hover:text-yellow-700 font-medium">Change Teacher</a>
+            </div>
+            <div class="flex items-center space-x-4">
+                <img src="https://images.pexels.com/photos/3778603/pexels-photo-3778603.jpeg" class="w-16 h-16 rounded-full object-cover">
+                <div>
+                    <h3 class="font-medium">Prof. Maria Rodriguez</h3>
+                    <p class="text-sm text-gray-500">Spanish Language Specialist</p>
+                    <div class="flex mt-1">
+                        <i class="fas fa-star text-yellow-400 text-sm"></i>
+                        <i class="fas fa-star text-yellow-400 text-sm"></i>
+                        <i class="fas fa-star text-yellow-400 text-sm"></i>
+                        <i class="fas fa-star text-yellow-400 text-sm"></i>
+                        <i class="fas fa-star-half-alt text-yellow-400 text-sm"></i>
+                        <span class="text-xs text-gray-500 ml-1">4.8 (120 reviews)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer Navigation -->
+    <nav class="fixed bottom-0 left-0 right-0 bg-white shadow-lg flex justify-around items-center p-3">
+        <a href="lessons.html" class="text-yellow-500 flex flex-col items-center">
+            <i class="fas fa-book-open text-xl"></i>
+            <span class="text-xs mt-1">Lessons</span>
+        </a>
+        <a href="achievements.html" class="text-gray-500 flex flex-col items-center">
+            <i class="fas fa-trophy text-xl"></i>
+            <span class="text-xs mt-1">Achievements</span>
+        </a>
+        <a href="profile.html" class="text-gray-500 flex flex-col items-center">
+            <i class="fas fa-user text-xl"></i>
+            <span class="text-xs mt-1">Profile</span>
+        </a>
+        <a href="support.html" class="text-gray-500 flex flex-col items-center">
+            <i class="fas fa-question-circle text-xl"></i>
+            <span class="text-xs mt-1">Support</span>
+        </a>
+    </nav>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load student data from localStorage
+            const userData = JSON.parse(localStorage.getItem('userData')) || {};
+            
+            if (userData.profileImage) {
+                document.getElementById('student-avatar').src = userData.profileImage;
+            }
+            
+            if (userData.firstName && userData.lastName) {
+                document.getElementById('student-level').textContent = `${userData.firstName}'s Progress`;
+            }
+
+            // Update progress ring
+            const progressRing = document.querySelector('.progress-ring__circle');
+            const radius = progressRing.r.baseVal.value;
+            const circumference = radius * 2 * Math.PI;
+            const offset = circumference - (75 / 100) * circumference;
+            
+            progressRing.style.strokeDasharray = `${circumference} ${circumference}`;
+            progressRing.style.strokeDashoffset = offset;
+        });
+    </script>
+</body>
+</html>
