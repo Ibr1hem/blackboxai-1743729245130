@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Achievements | LinguaAI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f3f4f6;
+        }
+        .badge-card {
+            transition: all 0.3s;
+        }
+        .badge-card:hover {
+            transform: scale(1.05);
+        }
+        .locked-badge {
+            filter: grayscale(100%);
+            opacity: 0.6;
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-gray-100">
+    <!-- Header -->
+    <header class="bg-white shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 py-4 sm:px-6 lg:px-8 flex justify-between items-center">
+            <div class="flex items-center space-x-4">
+                <img id="student-avatar" src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg" class="w-10 h-10 rounded-full object-cover">
+                <div>
+                    <h1 class="text-xl font-bold text-gray-900">My Achievements</h1>
+                    <p class="text-sm text-gray-500" id="student-level">5 Badges Earned</p>
+                </div>
+            </div>
+            <div class="flex items-center space-x-4">
+                <a href="profile.html" class="text-gray-600 hover:text-gray-900">
+                    <i class="fas fa-user-circle text-xl"></i>
+                </a>
+                <a href="lessons.html" class="text-gray-600 hover:text-gray-900">
+                    <i class="fas fa-book-open text-xl"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
+        <!-- Progress Summary -->
+        <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+            <h2 class="text-lg font-semibold mb-4">Achievement Progress</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="flex items-center">
+                    <div class="bg-yellow-100 p-3 rounded-full mr-4">
+                        <i class="fas fa-medal text-yellow-500 text-xl"></i>
+                    </div>
+                    <div>
+                        <p class="text-sm text-gray-500">Total Badges</p>
+                        <p class="text-lg font-semibold">5/12</p>
+                    </div>
+                </div>
+                <div class="flex items-center">
+                    <div class="bg-blue-100 p-3 rounded-full mr-4">
+                        <i class="fas fa-fire text-blue-500 text-xl"></i>
+                    </div>
+                    <div>
+                        <p class="text-sm text-gray-500">Current Streak</p>
+                        <p class="text-lg font-semibold">7 Days</p>
+                    </div>
+                </div>
+                <div class="flex items-center">
+                    <div class="bg-purple-100 p-3 rounded-full mr-4">
+                        <i class="fas fa-trophy text-purple-500 text-xl"></i>
+                    </div>
+                    <div>
+                        <p class="text-sm text-gray-500">Next Reward</p>
+                        <p class="text-lg font-semibold">Gold Badge</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Badges Grid -->
+        <h2 class="text-xl font-bold mb-4">Your Badges</h2>
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
+            <!-- Badge 1 -->
+            <div class="badge-card bg-white rounded-xl shadow-md p-6 flex flex-col items-center">
+                <div class="w-20 h-20 rounded-full bg-yellow-100 flex items-center justify-center mb-3">
+                    <i class="fas fa-star text-yellow-500 text-3xl"></i>
+                </div>
+                <h3 class="font-semibold text-center">Fast Learner</h3>
+                <p class="text-xs text-gray-500 text-center mt-1">Complete 3 lessons in a day</p>
+                <span class="mt-2 text-xs text-yellow-600 font-medium">Earned: 2 days ago</span>
+            </div>
+
+            <!-- Badge 2 -->
+            <div class="badge-card bg-white rounded-xl shadow-md p-6 flex flex-col items-center">
+                <div class="w-20 h-20 rounded-full bg-blue-100 flex items-center justify-center mb-3">
+                    <i class="fas fa-microphone text-blue-500 text-3xl"></i>
+                </div>
+                <h3 class="font-semibold text-center">Perfect Pronunciation</h3>
+                <p class="text-xs text-gray-500 text-center mt-1">Score 100% on speaking exercises</p>
+                <span class="mt-2 text-xs text-blue-600 font-medium">Earned: 1 week ago</span>
+            </div>
+
+            <!-- Badge 3 -->
+            <div class="badge-card bg-white rounded-xl shadow-md p-6 flex flex-col items-center">
+                <div class="w-20 h-20 rounded-full bg-green-100 flex items-center justify-center mb-3">
+                    <i class="fas fa-bolt text-green-500 text-3xl"></i>
+                </div>
+                <h3 class="font-semibold text-center">Quick Thinker</h3>
+                <p class="text-xs text-gray-500 text-center mt-1">Answer 5 questions in a row correctly</p>
+                <span class="mt-2 text-xs text-green-600 font-medium">Earned: 3 days ago</span>
+            </div>
+
+            <!-- Badge 4 -->
+            <div class="badge-card bg-white rounded-xl shadow-md p-6 flex flex-col items-center">
+                <div class="w-20 h-20 rounded-full bg-purple-100 flex items-center justify-center mb-3">
+                    <i class="fas fa-calendar-check text-purple-500 text-3xl"></i>
+                </div>
+                <h3 class="font-semibold text-center">7-Day Streak</h3>
+                <p class="text-xs text-gray-500 text-center mt-1">Practice for 7 consecutive days</p>
+                <span class="mt-2 text-xs text-purple-600 font-medium">Earned: Today</span>
+            </div>
+
+            <!-- Badge 5 -->
+            <div class="badge-card bg-white rounded-xl shadow-md p-6 flex flex-col items-center">
+                <div class="w-20 h-20 rounded-full bg-red-100 flex items-center justify-center mb-3">
+                    <i class="fas fa-award text-red-500 text-3xl"></i>
+                </div>
+                <h3 class="font-semibold text-center">Quiz Master</h3>
+                <p class="text-xs text-gray-500 text-center mt-1">Score 100% on 5 quizzes</p>
+                <span class="mt-2 text-xs text-red-600 font-medium">Earned: 2 weeks ago</span>
+            </div>
+
+            <!-- Locked Badge 6 -->
+            <div class="badge-card bg-white rounded-xl shadow-md p-6 flex flex-col items-center locked-badge">
+                <div class="w-20 h-20 rounded-full bg-gray-100 flex items-center justify-center mb-3">
+                    <i class="fas fa-globe text-gray-400 text-3xl"></i>
+                </div>
+                <h3 class="font-semibold text-center">World Traveler</h3>
+                <p class="text-xs text-gray-500 text-center mt-1">Learn 50 words in 3 languages</p>
+                <span class="mt-2 text-xs text-gray-400 font-medium">Locked</span>
+            </div>
+
+            <!-- More locked badges... -->
+        </div>
+
+        <!-- Recent Activity -->
+        <div class="mt-12 bg-white rounded-lg shadow-md p-6">
+            <h2 class="text-lg font-semibold mb-4">Recent Achievements</h2>
+            <div class="space-y-4">
+                <div class="flex items-start">
+                    <div class="bg-yellow-100 p-2 rounded-full mr-4">
+                        <i class="fas fa-medal text-yellow-500"></i>
+                    </div>
+                    <div>
+                        <p class="font-medium">7-Day Streak Badge Earned</p>
+                        <p class="text-sm text-gray-500">You've practiced for 7 days in a row!</p>
+                        <p class="text-xs text-gray-400 mt-1">Today at 10:30 AM</p>
+                    </div>
+                </div>
+                <div class="flex items-start">
+                    <div class="bg-green-100 p-2 rounded-full mr-4">
+                        <i class="fas fa-bolt text-green-500"></i>
+                    </div>
+                    <div>
+                        <p class="font-medium">Quick Thinker Badge Earned</p>
+                        <p class="text-sm text-gray-500">Answered 5 questions correctly in a row</p>
+                        <p class="text-xs text-gray-400 mt-1">3 days ago</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer Navigation -->
+    <nav class="fixed bottom-0 left-0 right-0 bg-white shadow-lg flex justify-around items-center p-3">
+        <a href="lessons.html" class="text-gray-500 flex flex-col items-center">
+            <i class="fas fa-book-open text-xl"></i>
+            <span class="text-xs mt-1">Lessons</span>
+        </a>
+        <a href="achievements.html" class="text-yellow-500 flex flex-col items-center">
+            <i class="fas fa-trophy text-xl"></i>
+            <span class="text-xs mt-1">Achievements</span>
+        </a>
+        <a href="profile.html" class="text-gray-500 flex flex-col items-center">
+            <i class="fas fa-user text-xl"></i>
+            <span class="text-xs mt-1">Profile</span>
+        </a>
+    </nav>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load student data from localStorage
+            const userData = JSON.parse(localStorage.getItem('userData')) || {};
+            
+            if (userData.profileImage) {
+                document.getElementById('student-avatar').src = userData.profileImage;
+            }
+            
+            if (userData.firstName) {
+                document.getElementById('student-level').textContent = `${userData.firstName}'s Achievements`;
+            }
+        });
+    </script>
+</body>
+</html>
